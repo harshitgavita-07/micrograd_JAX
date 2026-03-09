@@ -1,54 +1,98 @@
 # micrograd-JAX
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![JAX](https://img.shields.io/badge/JAX-ML%20framework-orange)
-![Status](https://img.shields.io/badge/status-learning%20project-green)
+![JAX](https://img.shields.io/badge/JAX-Google%20Research-orange)
+![Project](https://img.shields.io/badge/type-learning%20project-green)
+![Status](https://img.shields.io/badge/status-active-lightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 ![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
 
-A **JAX-based exploration inspired by Andrej Karpathy’s micrograd**.
+A **JAX-based exploration inspired by Andrej Karpathy’s micrograd project** from the **Neural Networks: Zero to Hero** series.
 
-The original micrograd builds a tiny automatic differentiation engine from scratch using scalar operations.  
-In this version, we explore similar ideas using **JAX**, focusing on understanding:
+The goal of this repository is to explore how **neural networks, gradients, and optimization work under the hood** while leveraging **JAX** for modern numerical computation.
 
-- gradient computation
-- neural network training
-- optimization behaviour
-- small deep learning experiments
-
-This repository is part of my **Machine Learning learning journey**, where I study concepts and rebuild systems from first principles.
-
-The goal is simple:
-
-> understand neural networks deeply by rebuilding the mechanics behind them.
-
-Instead of treating ML frameworks as black boxes, this project experiments with **minimal implementations of neural networks using JAX**.
+Instead of treating machine learning frameworks as black boxes, this project experiments with **minimal neural network implementations and training mechanics using JAX**.
 
 ---
 
-## What we are building here
+# Why this project exists
 
-This repository explores:
+Modern ML frameworks like PyTorch, TensorFlow, and JAX hide a lot of complexity behind high-level APIs.
+
+Projects like **micrograd** are powerful because they reveal the mechanics of:
+
+- automatic differentiation
+- gradient flow
+- neural network training
+- optimization
+
+This repository extends that exploration by experimenting with **JAX**, a modern framework used in machine learning research.
+
+The objective is simple:
+
+> Learn deep learning by rebuilding and experimenting with the systems behind it.
+
+---
+
+# About JAX
+
+[JAX](https://github.com/google/jax) is an open-source numerical computing and machine learning framework developed by **Google Research**.
+
+It provides a NumPy-like API combined with powerful features for high-performance ML and scientific computing.
+
+Key capabilities include:
+
+• **Automatic differentiation** for computing gradients  
+• **JIT compilation** for fast execution  
+• **Vectorization (vmap)** for efficient batch computation  
+• **Parallel execution on GPUs and TPUs**
+
+JAX is widely used in modern ML research because it combines **clean Python code with high-performance computation**.
+
+In this repository, JAX is used to explore neural network training, gradient computation, and optimization behaviour in a minimal and educational setting.
+
+---
+
+# What this repository explores
+
+This project acts as a **learning playground for deep learning fundamentals**.
+
+Experiments include:
 
 • rebuilding neural network training loops  
 • experimenting with gradients and optimization  
 • understanding automatic differentiation with JAX  
-• implementing simple neural network models  
+• implementing minimal neural network models  
+• studying training behaviour and learning dynamics  
 
-It is meant to be a **learning playground for deep learning fundamentals**.
+The focus is **clarity and understanding**, not building a production ML framework.
 
 ---
 
-## Repository purpose
+# Repository purpose
 
-This project is designed to be an **open learning space**.
+This repository is designed as an **open learning space**.
 
 If you find it useful you can:
 
-⭐ star the repo  
-🍴 fork it  
-💡 suggest improvements  
-📚 use it to learn ML fundamentals
+⭐ Star the repository  
+🍴 Fork it  
+💡 Suggest improvements  
+📚 Use it as a learning reference
+
+---
+
+# Original Project
+
+This repository is inspired by the original **micrograd project by Andrej Karpathy**.
+
+Original repository:
+
+https://github.com/karpathy/micrograd
+
+The section below contains the **original micrograd README**, preserved without modification.
+
+---
 
 # micrograd
 
