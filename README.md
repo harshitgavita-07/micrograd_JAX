@@ -50,19 +50,6 @@ If you find it useful you can:
 💡 suggest improvements  
 📚 use it to learn ML fundamentals
 
----
-
-⚠️ **Important Note**
-
-The project below is **inspired by the original micrograd by Andrej Karpathy**.
-
-Original repository:  
-https://github.com/karpathy/micrograd
-
-The section below contains the **original README content from micrograd**, preserved without modification.
-
----
-
 # micrograd
 
 ![awww](puppy.jpg)
