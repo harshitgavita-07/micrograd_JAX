@@ -1,3 +1,67 @@
+# micrograd-JAX
+
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![JAX](https://img.shields.io/badge/JAX-ML%20framework-orange)
+![Status](https://img.shields.io/badge/status-learning%20project-green)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
+
+A **JAX-based exploration inspired by Andrej Karpathy’s micrograd**.
+
+The original micrograd builds a tiny automatic differentiation engine from scratch using scalar operations.  
+In this version, we explore similar ideas using **JAX**, focusing on understanding:
+
+- gradient computation
+- neural network training
+- optimization behaviour
+- small deep learning experiments
+
+This repository is part of my **Machine Learning learning journey**, where I study concepts and rebuild systems from first principles.
+
+The goal is simple:
+
+> understand neural networks deeply by rebuilding the mechanics behind them.
+
+Instead of treating ML frameworks as black boxes, this project experiments with **minimal implementations of neural networks using JAX**.
+
+---
+
+## What we are building here
+
+This repository explores:
+
+• rebuilding neural network training loops  
+• experimenting with gradients and optimization  
+• understanding automatic differentiation with JAX  
+• implementing simple neural network models  
+
+It is meant to be a **learning playground for deep learning fundamentals**.
+
+---
+
+## Repository purpose
+
+This project is designed to be an **open learning space**.
+
+If you find it useful you can:
+
+⭐ star the repo  
+🍴 fork it  
+💡 suggest improvements  
+📚 use it to learn ML fundamentals
+
+---
+
+⚠️ **Important Note**
+
+The project below is **inspired by the original micrograd by Andrej Karpathy**.
+
+Original repository:  
+https://github.com/karpathy/micrograd
+
+The section below contains the **original README content from micrograd**, preserved without modification.
+
+---
 
 # micrograd
 
@@ -30,10 +94,10 @@ e = c - d
 f = e**2
 g = f / 2.0
 g += 10.0 / f
-print(f'{g.data:.4f}') # prints 24.7041, the outcome of this forward pass
+print(f'{g.data:.4f}')
 g.backward()
-print(f'{a.grad:.4f}') # prints 138.8338, i.e. the numerical value of dg/da
-print(f'{b.grad:.4f}') # prints 645.5773, i.e. the numerical value of dg/db
+print(f'{a.grad:.4f}')
+print(f'{b.grad:.4f}')
 ```
 
 ### Training a neural net
@@ -58,7 +122,7 @@ dot = draw_dot(y)
 
 ### Running tests
 
-To run the unit tests you will have to install [PyTorch](https://pytorch.org/), which the tests use as a reference for verifying the correctness of the calculated gradients. Then simply:
+To run the unit tests you will have to install PyTorch, which the tests use as a reference for verifying the correctness of the calculated gradients. Then simply:
 
 ```bash
 python -m pytest
