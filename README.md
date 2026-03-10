@@ -1,164 +1,104 @@
-# micrograd-JAX
+<div align="center">
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![JAX](https://img.shields.io/badge/JAX-Google%20Research-orange)
-![Project](https://img.shields.io/badge/type-learning%20project-green)
-![Status](https://img.shields.io/badge/status-active-lightgreen)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
-![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
+# ⚡ micrograd-JAX
 
-A **JAX-based exploration inspired by Andrej Karpathy’s micrograd project** from the **Neural Networks: Zero to Hero** series.
+### Andrej Karpathy's micrograd — Rebuilt with JAX
 
-The goal of this repository is to explore how **neural networks, gradients, and optimization work under the hood** while leveraging **JAX** for modern numerical computation.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![JAX](https://img.shields.io/badge/JAX-Google%20Research-FF6F00?style=for-the-badge&logo=google&logoColor=white)](https://github.com/google/jax)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/harshitgavita-07/micrograd_JAX?style=for-the-badge&color=yellow)](https://github.com/harshitgavita-07/micrograd_JAX/stargazers)
 
-Instead of treating machine learning frameworks as black boxes, this project experiments with **minimal neural network implementations and training mechanics using JAX**.
+*If you understand autodiff deeply enough to rebuild it — you understand deep learning.*
 
----
-
-# Why this project exists
-
-Modern ML frameworks like PyTorch, TensorFlow, and JAX hide a lot of complexity behind high-level APIs.
-
-Projects like **micrograd** are powerful because they reveal the mechanics of:
-
-- automatic differentiation
-- gradient flow
-- neural network training
-- optimization
-
-This repository extends that exploration by experimenting with **JAX**, a modern framework used in machine learning research.
-
-The objective is simple:
-
-> Learn deep learning by rebuilding and experimenting with the systems behind it.
+</div>
 
 ---
 
-# About JAX
+## 🧠 What Is This?
 
-[JAX](https://github.com/google/jax) is an open-source numerical computing and machine learning framework developed by **Google Research**.
+Karpathy's [micrograd](https://github.com/karpathy/micrograd) is one of the most celebrated ML teaching tools ever written — a tiny scalar autograd engine that reveals exactly how backpropagation works.
 
-It provides a NumPy-like API combined with powerful features for high-performance ML and scientific computing.
+**This repo rebuilds micrograd using JAX** — replacing the scalar computation graph with JAX's functional transforms: `grad`, `jit`, and `vmap`. The result is a minimal autograd engine that's both pedagogically clear and production-ready with GPU/TPU acceleration.
 
-Key capabilities include:
-
-• **Automatic differentiation** for computing gradients  
-• **JIT compilation** for fast execution  
-• **Vectorization (vmap)** for efficient batch computation  
-• **Parallel execution on GPUs and TPUs**
-
-JAX is widely used in modern ML research because it combines **clean Python code with high-performance computation**.
-
-In this repository, JAX is used to explore neural network training, gradient computation, and optimization behaviour in a minimal and educational setting.
+> **Why JAX?** Because modern ML research runs on JAX (DeepMind, Google Brain, many others). Understanding how JAX's autodiff works at this level is a superpower.
 
 ---
 
-# What this repository explores
+## ⚔️ micrograd vs micrograd-JAX
 
-This project acts as a **learning playground for deep learning fundamentals**.
-
-Experiments include:
-
-• rebuilding neural network training loops  
-• experimenting with gradients and optimization  
-• understanding automatic differentiation with JAX  
-• implementing minimal neural network models  
-• studying training behaviour and learning dynamics  
-
-The focus is **clarity and understanding**, not building a production ML framework.
+| Feature | Original micrograd | micrograd-JAX (this repo) |
+|---|---|---|
+| Engine | Custom scalar Value graph | JAX functional transforms |
+| Differentiation | Manual backprop | `jax.grad` |
+| Acceleration | CPU only | CPU / GPU / TPU via `jit` |
+| Vectorization | None | `vmap` for batch ops |
+| JIT compilation | None | `@jax.jit` |
+| Research-ready | ❌ | ✅ |
 
 ---
 
-# Repository purpose
+## 🔬 Core Concepts Demonstrated
 
-This repository is designed as an **open learning space**.
-
-If you find it useful you can:
-
-⭐ Star the repository  
-🍴 Fork it  
-💡 Suggest improvements  
-📚 Use it as a learning reference
+- **Automatic Differentiation** — how `grad` computes exact gradients via forward/reverse mode AD
+- **JIT Compilation** — how `jit` traces and compiles a Python function to XLA
+- **Vectorization** — how `vmap` eliminates explicit for-loops over batches
+- **Functional Purity** — why JAX requires pure functions and how to work with it
+- **Neural Net Training** — MLP trained on the moons dataset, all from scratch
 
 ---
 
-# Original Project
-
-This repository is inspired by the original **micrograd project by Andrej Karpathy**.
-
-Original repository:
-
-https://github.com/karpathy/micrograd
-
-The section below contains the **original micrograd README**, preserved without modification.
-
----
-
-# micrograd
-
-![awww](puppy.jpg)
-
-A tiny Autograd engine (with a bite! :)). Implements backpropagation (reverse-mode autodiff) over a dynamically built DAG and a small neural networks library on top of it with a PyTorch-like API. Both are tiny, with about 100 and 50 lines of code respectively. The DAG only operates over scalar values, so e.g. we chop up each neuron into all of its individual tiny adds and multiplies. However, this is enough to build up entire deep neural nets doing binary classification, as the demo notebook shows. Potentially useful for educational purposes.
-
-### Installation
+## 🚀 Quick Start
 
 ```bash
-pip install micrograd
+git clone https://github.com/harshitgavita-07/micrograd_JAX.git
+cd micrograd_JAX
+pip install jax jaxlib numpy matplotlib
+jupyter notebook demo.ipynb
 ```
 
-### Example usage
+---
 
-Below is a slightly contrived example showing a number of possible supported operations:
+## 📁 Structure
 
-```python
-from micrograd.engine import Value
-
-a = Value(-4.0)
-b = Value(2.0)
-c = a + b
-d = a * b + b**3
-c += c + 1
-c += 1 + c + (-a)
-d += d * 2 + (b + a).relu()
-d += 3 * d + (b - a).relu()
-e = c - d
-f = e**2
-g = f / 2.0
-g += 10.0 / f
-print(f'{g.data:.4f}')
-g.backward()
-print(f'{a.grad:.4f}')
-print(f'{b.grad:.4f}')
+```
+micrograd_JAX/
+├── Mine version(JAX)_micrograd/   # JAX reimplementation
+│   ├── demo.ipynb                 # Full walkthrough notebook
+│   └── trace_graph.ipynb          # Computation graph visualization
+├── micrograd/                     # Original Karpathy implementation (reference)
+├── test/                          # Test suite
+└── setup.py
 ```
 
-### Training a neural net
+---
 
-The notebook `demo.ipynb` provides a full demo of training an 2-layer neural network (MLP) binary classifier. This is achieved by initializing a neural net from `micrograd.nn` module, implementing a simple svm "max-margin" binary classification loss and using SGD for optimization. As shown in the notebook, using a 2-layer neural net with two 16-node hidden layers we achieve the following decision boundary on the moon dataset:
+## 📊 Training Result
 
-![2d neuron](moon_mlp.png)
+The MLP trained on the `make_moons` dataset achieves clean decision boundary separation:
 
-### Tracing / visualization
+![Training Result](moon_mlp.png)
 
-For added convenience, the notebook `trace_graph.ipynb` produces graphviz visualizations. E.g. this one below is of a simple 2D neuron, arrived at by calling `draw_dot` on the code below, and it shows both the data (left number in each node) and the gradient (right number in each node).
+---
 
-```python
-from micrograd import nn
-n = nn.Neuron(2)
-x = [Value(1.0), Value(-2.0)]
-y = n(x)
-dot = draw_dot(y)
-```
+## 💡 Key Insight
 
-![2d neuron](gout.svg)
+The biggest lesson building this: **JAX doesn't have a computation graph you can inspect like micrograd's `Value` class.** Instead, JAX traces Python functions at the *type* level and generates XLA computations. This forced a deeper understanding of what autodiff actually is — not a graph, but a program transformation.
 
-### Running tests
+---
 
-To run the unit tests you will have to install PyTorch, which the tests use as a reference for verifying the correctness of the calculated gradients. Then simply:
+## 🔗 Related
 
-```bash
-python -m pytest
-```
+- [Karpathy's micrograd](https://github.com/karpathy/micrograd) — the original
+- [Neural Networks: Zero to Hero](https://youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) — the course this is based on
+- [JAX docs](https://jax.readthedocs.io) — JAX transforms reference
 
-### License
+---
 
-MIT
+<div align="center">
+
+**If this helped you understand JAX or autodiff, drop a ⭐ — it helps others find it.**
+
+*Built by [Harshit Gavita](https://github.com/harshitgavita-07)*
+
+</div>
