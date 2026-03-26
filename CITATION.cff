@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If this helped you understand JAX autodiff, please cite it."
+type: software
+title: "micrograd-JAX: Karpathy's micrograd rebuilt with JAX"
+abstract: >
+  A minimal autograd engine that rebuilds Andrej Karpathy's micrograd
+  using JAX functional transforms (grad, jit, vmap) — pedagogically
+  transparent and GPU/TPU-ready.
+authors:
+  - family-names: Gavita
+    given-names: Harshit
+repository-code: "https://github.com/harshitgavita-07/micrograd_JAX"
+keywords:
+  - machine-learning
+  - automatic-differentiation
+  - jax
+  - autograd
+  - neural-networks
+license: MIT
